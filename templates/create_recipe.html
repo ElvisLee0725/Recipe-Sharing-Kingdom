@@ -1,0 +1,19 @@
+{% extends 'default/base.html' %}
+{% block content %}
+
+  <div class="container main-container">
+      <h1>Share Your Recipes</h1>
+      <form method="POST" action="/recipes/create/post">
+          <label>Recipe Name</label>
+          <input class="form-control" type="text" name="title" placeholder="title">
+          <label>Image Path</label>
+          <input class="form-control" type="text" name="image_path" placeholder="image_path">
+          <label>Description</label>
+          <textarea class="form-control" type="text" name="description" placeholder="description"></textarea>
+          <hr>
+          <!-- To prevent csrf attack! It's built in Django that can tell if user is malicious-->
+          {% csrf_token %}
+          <button class="btn btn-primary btn-block">Submit</button>
+      </form>
+  </div>
+{% endblock %}

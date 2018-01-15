@@ -1,0 +1,20 @@
+{% extends 'default/base.html' %}
+{% block content %}
+
+  <div class="container main-container">
+      <h1>Register</h1>
+      <form method="POST" action="/signup/post">
+          <label>User Name</label>
+          <input class="form-control" type="text" name="username">
+          <label>Email</label>
+          <input class="form-control" type="text" name="email">
+          <label>Password</label>
+          <input class="form-control" type="password" name="password">
+          <hr>
+          <!-- To prevent csrf attack! It's built in Django that can tell if user is malicious-->
+          {% csrf_token %}
+          <button class="btn btn-primary btn-block">Submit</button>
+      </form>
+  </div>
+{% endblock %}
+  
