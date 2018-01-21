@@ -50,3 +50,6 @@ def post_login(request):
 def post_logout(request):
     auth.logout(request)
     return redirect('/')
+
+def get_shop(request):
+    return render(request, 'shop.html')

@@ -6,23 +6,23 @@
 
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
         <li class="nav-item">
+          <a class="nav-link" href="/shop">Shopping</a>
+        </li>
+        <!-- <li class="nav-item">
           <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
+        </li> -->
+        <!-- <li class="nav-item">
           <a class="nav-link disabled" href="#">Disabled</a>
-        </li>
-        <li class="nav-item dropdown">
+        </li> -->
+        <!-- <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
           <div class="dropdown-menu" aria-labelledby="dropdown01">
             <a class="dropdown-item" href="#">Action</a>
             <a class="dropdown-item" href="#">Another action</a>
             <a class="dropdown-item" href="#">Something else here</a>
           </div>
-        </li>
+        </li> -->
       </ul>
       {% if user.is_authenticated %}
       <ul class="nav navbar-nav navbar-right">
@@ -42,6 +42,7 @@
         <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
         {% csrf_token %}
         <button class="btn btn-lg btn-primary" type="submit">Sign in</button>
+        <a href="#"><button class="btn btn-lg btn-primary" type="button">FB Sign In</button></a>
         <a href="signup"><button class="btn btn-lg btn-primary" type="button">Register</button></a>
       </form>
       {% endif %}

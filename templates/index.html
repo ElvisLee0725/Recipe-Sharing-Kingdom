@@ -4,6 +4,10 @@
 <main role="main" class="main-container">
   <!-- Main jumbotron for a primary marketing message or call to action -->
   <div class="jumbotron">
+    {% for message in messages %}
+      <div class="alert alert-success" role="alert">{{ message }}</div>
+    {% endfor %}
+
     <div class="container">
       <h1 class="display-3">A Wonderful Time to Share</h1>
       <p>This is a place for you to share cooks and recipes!</p>
@@ -28,11 +32,11 @@
     var strHTML = "";
     console.log(data);
     data.forEach(function(value) {
-      strHTML += '<div class="col-md-4"><h4>' + value.fields.title + '</h4><a href="#">' + '<img src="' + value.fields.image_path + '" class="img-fluid img-thumbnail"></a></div>';
+      strHTML += '<div class="col-md-4"><h4>' + value.fields.title + '</h4><a href="/recipes/' + value.pk +'"><img src="' + value.fields.image_path + '" class="img-fluid img-thumbnail"></a></div>';
     });
     result.innerHTML = strHTML;
   };
-  xhr.open('GET', './api/recipes', true);
+  xhr.open('GET', '/api/recipes', true);
   xhr.send();
 
   xhr.onload = onloadHandle;

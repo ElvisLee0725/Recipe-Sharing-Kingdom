@@ -2,8 +2,14 @@
 {% block content %}
 
   <div class="container main-container">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active">{{ recipe.title }}</li>
+    </ol>
       <div>
-        <h4></h4>
+        <h4>{{ recipe.title }}</h4>
+        <img src="{{ recipe.image_path }}">
+        <p>{{ recipe.description }}</p>
       </div>
   </div>
 {% endblock %}

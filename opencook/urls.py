@@ -13,11 +13,11 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
 # from django.urls import path
 
-from mainapp.views import get_index, get_signup, post_signup, post_login, post_logout
+from mainapp.views import get_index, get_signup, post_signup, post_login, post_logout, get_shop
 from recipe.views import get_recipes_api, get_create_recipe, post_create_recipe, get_recipe
 
 urlpatterns = [
@@ -30,5 +30,7 @@ urlpatterns = [
     url(r'^recipes/(\d+)$', get_recipe),
     url(r'^recipes/create$', get_create_recipe),
     url(r'^recipes/create/post$', post_create_recipe),
-    url(r'^', get_index)
+    url(r'^shop$', get_shop),
+    url(r'^accounts/', include('allauth.urls')),
+    url(r'^$', get_index),
 ]

@@ -3,6 +3,10 @@ from .models import Recipe
 from django.http import JsonResponse
 from django.core import serializers
 from django import forms
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+
+
 # Create your views here.
 
 class RecipeForm(forms.ModelForm):
@@ -17,20 +21,25 @@ def get_recipes_api(request):
 
 def get_recipe(request, recipe_id):
     print(recipe_id)
-    return render(request, 'recipe.html')
+    recipe = Recipe.objects.get(pk=recipe_id)
+    return render(request, 'recipe.html', locals())
 
-
+@login_required
 def get_create_recipe(request):
     return render(request, 'create_recipe.html')
 
+@login_required
 def post_create_recipe(request):
     if request.method == 'POST':
         form = RecipeForm(request.POST)
         if form.is_valid():
             new_recipe = form.save()
+            print("New recipe created!")
             print(new_recipe)
-            return redirect('/')
+            messages.add_message(request, messages.SUCCESS, 'Shared Successfully!')
+            return redirect('/', locals())
         else:
-            return redirect('/recipe/create')
+            print("Create recipe fails.")
+            return redirect('/recipes/create')
 
 

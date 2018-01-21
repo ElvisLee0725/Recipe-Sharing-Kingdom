@@ -25,7 +25,10 @@ SECRET_KEY = 'amdjf4lj_3f@#ki!t^v1^2=$9c)ukzcmuk8)3b!hof$)jwpa&&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['a621a58d.ngrok.io']
+
+LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = '/'
 
 
 # Application definition
@@ -37,7 +40,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'recipe'
+    'recipe',
+    # The following apps are required for django allauth:
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
 ]
 
 MIDDLEWARE = [
@@ -49,6 +58,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+SITE_ID = 1
 
 ROOT_URLCONF = 'opencook.urls'
 
@@ -67,6 +78,15 @@ TEMPLATES = [
         },
     },
 ]
+
+# Integrate Facebook login API
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
 
 WSGI_APPLICATION = 'opencook.wsgi.application'
 
